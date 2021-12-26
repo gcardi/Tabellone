@@ -1,0 +1,53 @@
+object frmPanelBase: TfrmPanelBase
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  BorderStyle = None
+  Caption = 'Pannello'
+  ClientHeight = 1080
+  ClientWidth = 1920
+  Position = Designed
+  FormStyle = StayOnTop
+  FormFactor.Width = 1920
+  FormFactor.Height = 1080
+  FormFactor.Orientations = [Landscape]
+  FormFactor.Devices = [Desktop]
+  OnMouseDown = FormMouseDown
+  OnMouseMove = FormMouseMove
+  OnMouseUp = FormMouseUp
+  OnResize = FormResize
+  DesignerMasterStyle = 0
+  object layoutMain: TLayout
+    Size.Width = 1920.000000000000000000
+    Size.Height = 1080.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object layoutBorder: TLayout
+      Size.Width = 1920.000000000000000000
+      Size.Height = 1080.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      object layoutTitle: TLayout
+        Size.Width = 1920.000000000000000000
+        Size.Height = 60.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object lblDateTime: TLabel
+          Align = MostLeft
+          AutoSize = True
+          StyledSettings = []
+          Margins.Left = 24.000000000000000000
+          Position.X = 24.000000000000000000
+          Size.Width = 12.000000000000000000
+          Size.Height = 60.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Family = 'Arial'
+          TextSettings.Font.Size = 36.000000000000000000
+          TextSettings.FontColor = claAquamarine
+          TextSettings.WordWrap = False
+          Text = '-'
+        end
+      end
+    end
+  end
+end

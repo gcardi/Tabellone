@@ -1,0 +1,80 @@
+object frmeNum: TfrmeNum
+  Size.Width = 122.000000000000000000
+  Size.Height = 98.000000000000000000
+  Size.PlatformDefault = False
+  object Rectangle1: TRectangle
+    Align = Client
+    Fill.Kind = Gradient
+    Fill.Gradient.Points = <
+      item
+        Color = claGray
+        Offset = 0.000000000000000000
+      end
+      item
+        Color = claSilver
+        Offset = 1.000000000000000000
+      end>
+    Fill.Gradient.Style = Radial
+    Margins.Left = 3.000000000000000000
+    Margins.Top = 3.000000000000000000
+    Margins.Right = 3.000000000000000000
+    Margins.Bottom = 3.000000000000000000
+    Size.Width = 116.000000000000000000
+    Size.Height = 92.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Thickness = 3.000000000000000000
+    XRadius = 16.000000000000000000
+    YRadius = 16.000000000000000000
+    object GradientAnimation1: TGradientAnimation
+      Duration = 0.250000000000000000
+      Interpolation = Cubic
+      PropertyName = 'Fill.Gradient'
+      StartValue.Points = <
+        item
+          Color = claGray
+          Offset = 0.000000000000000000
+        end
+        item
+          Color = claSilver
+          Offset = 1.000000000000000000
+        end>
+      StartValue.Style = Radial
+      StopValue.Points = <
+        item
+          Color = xFFE9E90D
+          Offset = 0.000000000000000000
+        end
+        item
+          Color = xFFFFFFB0
+          Offset = 1.000000000000000000
+        end>
+      StopValue.Style = Radial
+    end
+    object Layout1: TLayout
+      Align = Client
+      Size.Width = 116.000000000000000000
+      Size.Height = 92.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object Text1: TText
+        Align = Center
+        Size.Width = 116.000000000000000000
+        Size.Height = 92.000000000000000000
+        Size.PlatformDefault = False
+        Text = '80'
+        TextSettings.Font.Size = 80.000000000000000000
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+        TextSettings.FontColor = xC0000000
+        TextSettings.WordWrap = False
+      end
+      object Layout2: TLayout
+        Align = Bottom
+        Position.Y = 84.000000000000000000
+        Size.Width = 116.000000000000000000
+        Size.Height = 8.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+      end
+    end
+  end
+end

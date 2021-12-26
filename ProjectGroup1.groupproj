@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{EF5749FA-274A-461E-A34F-E42C1DAC2005}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Tombola.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Tombola">
+        <MSBuild Projects="Tombola.cbproj"/>
+    </Target>
+    <Target Name="Tombola:Clean">
+        <MSBuild Projects="Tombola.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Tombola:Make">
+        <MSBuild Projects="Tombola.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Tombola"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Tombola:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Tombola:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

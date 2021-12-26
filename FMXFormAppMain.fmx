@@ -1,0 +1,362 @@
+object frmPanelAppMain: TfrmPanelAppMain
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = Single
+  Caption = 'Form1'
+  ClientHeight = 280
+  ClientWidth = 337
+  Position = Designed
+  Visible = True
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop, iPhone, iPad]
+  DesignerMasterStyle = 0
+  object tmrClock: TTimer
+    OnTimer = tmrClockTimer
+    Left = 144
+    Top = 136
+  end
+  object tmrAutoStart: TTimer
+    OnTimer = tmrAutoStartTimer
+    Left = 280
+    Top = 136
+  end
+  object layoutMain: TLayout
+    Align = Client
+    Size.Width = 337.000000000000000000
+    Size.Height = 258.000000000000000000
+    Size.PlatformDefault = False
+    object Button1: TButton
+      Action = actPanelShow
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 232.000000000000000000
+      Position.Y = 24.000000000000000000
+      TabOrder = 0
+    end
+    object Button11: TButton
+      Action = actPanelMonoscope
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 24.000000000000000000
+      Position.Y = 64.000000000000000000
+      Size.Width = 81.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+    end
+    object Button2: TButton
+      Action = actPanelHide
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 232.000000000000000000
+      Position.Y = 64.000000000000000000
+      TabOrder = 2
+    end
+    object Button3: TButton
+      Action = actPanelAutoFit
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 128.000000000000000000
+      Position.Y = 64.000000000000000000
+      TabOrder = 3
+    end
+    object Button5: TButton
+      Action = actFileStart
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 24.000000000000000000
+      Position.Y = 24.000000000000000000
+      Size.Width = 81.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+    end
+    object Button7: TButton
+      Action = actFileStop
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 128.000000000000000000
+      Position.Y = 24.000000000000000000
+      Size.Width = 81.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 5
+    end
+    object Button8: TButton
+      Enabled = False
+      StyledSettings = [Family, Style, FontColor]
+      Position.Y = 85.000000000000000000
+      Size.Width = 305.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 6
+      Text = 'Cell finished'
+      TextSettings.Font.Size = 18.000000000000000000
+      Visible = False
+    end
+    object comboboxPanelTopLeftScreen: TComboBox
+      Items.Strings = (
+        'Window')
+      ItemIndex = 0
+      Position.X = 24.000000000000000000
+      Position.Y = 200.000000000000000000
+      Size.Width = 289.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 7
+    end
+    object edtEventCode: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 8
+      Text = '0123456789AB'
+      Position.X = 208.000000000000000000
+      Position.Y = 80.000000000000000000
+      Size.Width = 121.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      Visible = False
+    end
+    object Label1: TLabel
+      AutoSize = True
+      Position.X = 24.000000000000000000
+      Position.Y = 183.000000000000000000
+      Size.Width = 39.000000000000000000
+      Size.Height = 16.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.WordWrap = False
+      Text = 'Display'
+    end
+    object Label3: TLabel
+      Action = actPanelKeepAspectRatio
+      Enabled = True
+      Position.X = 80.000000000000000000
+      Position.Y = 98.000000000000000000
+      Size.Width = 73.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Trimming = None
+    end
+    object Label8: TLabel
+      Action = actPanelScaling
+      Enabled = True
+      Position.X = 80.000000000000000000
+      Position.Y = 140.000000000000000000
+      Size.Width = 73.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Trimming = None
+    end
+    object Label9: TLabel
+      Action = actPanelClipping
+      Enabled = True
+      Position.X = 240.000000000000000000
+      Position.Y = 98.000000000000000000
+      Size.Width = 73.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Trimming = None
+    end
+    object switchPanelClipping: TSwitch
+      Action = actPanelClipping
+      Enabled = True
+      Position.X = 184.000000000000000000
+      Position.Y = 104.000000000000000000
+      Size.Width = 48.000000000000000000
+      Size.Height = 20.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 14
+    end
+    object switchPanelKeepAspectRatio: TSwitch
+      Action = actPanelKeepAspectRatio
+      Enabled = True
+      Position.X = 24.000000000000000000
+      Position.Y = 104.000000000000000000
+      Size.Width = 48.000000000000000000
+      Size.Height = 20.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 15
+    end
+    object switchPanelScaling: TSwitch
+      Action = actPanelScaling
+      Enabled = True
+      Position.X = 24.000000000000000000
+      Position.Y = 146.000000000000000000
+      Size.Width = 48.000000000000000000
+      Size.Height = 20.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 16
+    end
+  end
+  object StatusBar1: TStatusBar
+    Position.Y = 258.000000000000000000
+    ShowSizeGrip = False
+    Size.Width = 337.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+  end
+  object popupmenuTrayIcon: TPopupMenu
+    Left = 184
+    Top = 200
+    object MenuItem8: TMenuItem
+      Action = actViewOpenMainWindow
+      Enabled = True
+      ImageIndex = -1
+    end
+    object MenuItem23: TMenuItem
+      Text = '-'
+    end
+    object MenuItem24: TMenuItem
+      Action = actFileStart
+      Enabled = True
+      ImageIndex = -1
+    end
+    object MenuItem25: TMenuItem
+      Action = actFileStop
+      Enabled = True
+      ImageIndex = -1
+    end
+    object MenuItem26: TMenuItem
+      Text = '-'
+    end
+    object MenuItem27: TMenuItem
+      Action = actPanelMonoscope
+      Enabled = True
+      ImageIndex = -1
+    end
+    object MenuItem32: TMenuItem
+      Action = actPanelShow
+      Enabled = True
+      ImageIndex = -1
+    end
+    object MenuItem33: TMenuItem
+      Action = actPanelHide
+      Enabled = True
+      ImageIndex = -1
+    end
+    object MenuItem28: TMenuItem
+      Text = '-'
+    end
+    object MenuItem29: TMenuItem
+      Action = actPanelClipping
+      Enabled = True
+      ImageIndex = -1
+    end
+    object MenuItem30: TMenuItem
+      Action = actPanelScaling
+      Enabled = True
+      Locked = True
+      ImageIndex = -1
+    end
+    object MenuItem31: TMenuItem
+      Action = actPanelKeepAspectRatio
+      Enabled = True
+      Locked = True
+      ImageIndex = -1
+    end
+    object MenuItem35: TMenuItem
+      Action = actPanelAutoFit
+      Enabled = True
+      ImageIndex = -1
+    end
+    object MenuItem37: TMenuItem
+      Text = '-'
+    end
+    object MenuItem36: TMenuItem
+      Action = actFileExit
+      Enabled = True
+      ImageIndex = -1
+    end
+  end
+  object ActionList1: TActionList
+    OnUpdate = ActionList1Update
+    Left = 88
+    Top = 200
+    object actPanelMonoscope: TAction
+      Category = 'Panel'
+      AutoCheck = True
+      Text = 'Monoscope'
+      ShortCut = 123
+      OnExecute = actPanelMonoscopeExecute
+      OnUpdate = actPanelMonoscopeUpdate
+    end
+    object actPanelClipping: TAction
+      Category = 'Panel'
+      Text = 'Clipping'
+      Checked = True
+      ShortCut = 32888
+      OnExecute = actPanelClippingExecute
+      OnUpdate = actPanelClippingUpdate
+    end
+    object actPanelScaling: TAction
+      Category = 'Panel'
+      Text = 'Scaling'
+      Checked = True
+      ShortCut = 32889
+      OnExecute = actPanelScalingExecute
+      OnUpdate = actPanelScalingUpdate
+    end
+    object actPanelKeepAspectRatio: TAction
+      Category = 'Panel'
+      Text = 'Keep aspect ratio'
+      Checked = True
+      ShortCut = 32890
+      OnExecute = actPanelKeepAspectRatioExecute
+      OnUpdate = actPanelKeepAspectRatioUpdate
+    end
+    object actFileStart: TAction
+      Category = 'File'
+      Text = 'Start'
+      ShortCut = 116
+      OnExecute = actFileStartExecute
+      OnUpdate = EnabledIfNotRunning
+    end
+    object actFileStop: TAction
+      Category = 'File'
+      Text = 'Stop'
+      ShortCut = 117
+      OnExecute = actFileStopExecute
+      OnUpdate = EnabledIfRunning
+    end
+    object actPanelShow: TAction
+      Category = 'Panel'
+      Text = 'Show'
+      ShortCut = 120
+      OnExecute = actPanelShowExecute
+      OnUpdate = actPanelShowUpdate
+    end
+    object actFileConfig: TAction
+      Category = 'File'
+      Text = 'Config...'
+      OnExecute = actFileConfigExecute
+      OnUpdate = EnabledIfNotRunning
+    end
+    object actPanelHide: TAction
+      Category = 'Panel'
+      Text = 'Hide'
+      ShortCut = 121
+      OnExecute = actPanelHideExecute
+      OnUpdate = actPanelHideUpdate
+    end
+    object actViewOpenMainWindow: TAction
+      Category = 'View'
+      Text = 'Open'
+      OnExecute = actViewOpenMainWindowExecute
+      OnUpdate = actViewOpenMainWindowUpdate
+    end
+    object actPanelAutoFit: TAction
+      Category = 'Panel'
+      Text = 'Autofit'
+      ShortCut = 122
+      OnExecute = actPanelAutoFitExecute
+      OnUpdate = actPanelAutoFitUpdate
+    end
+    object actFileExit: TAction
+      Category = 'File'
+      Text = 'Quit'
+      OnExecute = actFileExitExecute
+    end
+  end
+end
