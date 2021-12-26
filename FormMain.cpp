@@ -190,7 +190,7 @@ void __fastcall TfrmMain::actPanelClearExecute(TObject *Sender)
 {
 //
     auto const Reply = TDialogServiceSync::MessageDialog(
-        _T( "Are you shure?" ),
+        _T( "Are you sure?" ),
         TMsgDlgType::mtConfirmation,
         TMsgDlgButtons() << TMsgDlgBtn::mbYes << TMsgDlgBtn::mbNo,
         TMsgDlgBtn::mbNo,
