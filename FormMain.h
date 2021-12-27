@@ -51,7 +51,6 @@ __published:	// IDE-managed Components
     TAction *actPanelClear;
     TButton *Button4;
     TMenuBar *MenuBar1;
-    TStyleBook *StyleBook1;
     void __fastcall FormCloseQuery(TObject *Sender, bool &CanClose);
     void __fastcall actPanelClearExecute(TObject *Sender);
     void __fastcall actPanelClearUpdate(TObject *Sender);

@@ -11,6 +11,7 @@
 #include "FormMain.h"
 #include "FormConfig.h"
 #include "AppUtils.h"
+#include "DataModStyleRes.h"
 
 using Anafestica::TConfigNode;
 

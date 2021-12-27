@@ -9,6 +9,7 @@
 #include <cassert>
 
 #include "FormPanel.h"
+#include "DataModStyleRes.h"
 
 using std::make_unique;
 using std::swap;

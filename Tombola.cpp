@@ -12,12 +12,13 @@
 
 
 //---------------------------------------------------------------------------
-USEFORM("FormPanel.cpp", frmPanel);
-USEFORM("FormMain.cpp", frmMain);
-USEFORM("FormConfig.cpp", frmConfig);
-USEFORM("FrameNum.cpp", frmeNum); /* TFrame: File Type */
-USEFORM("FMXFormPanelBase.cpp", frmPanelBase);
 USEFORM("FMXFormAppMain.cpp", frmPanelAppMain);
+USEFORM("FMXFormPanelBase.cpp", frmPanelBase);
+USEFORM("FrameNum.cpp", frmeNum); /* TFrame: File Type */
+USEFORM("FormConfig.cpp", frmConfig);
+USEFORM("FormMain.cpp", frmMain);
+USEFORM("FormPanel.cpp", frmPanel);
+USEFORM("DataModStyleRes.cpp", dmStyleRes); /* TDataModule: File Type */
 //---------------------------------------------------------------------------
 extern "C" int FMXmain()
 {
@@ -41,6 +42,7 @@ extern "C" int FMXmain()
 
         Application->Initialize();
         Application->CreateForm(__classid(TfrmMain), &frmMain);
+         Application->CreateForm(__classid(TdmStyleRes), &dmStyleRes);
          Application->Run();
         while ( Screen->FormCount ) {
            delete Screen->Forms[0];

@@ -2,8 +2,9 @@ object frmConfig: TfrmConfig
   Left = 0
   Top = 0
   Caption = 'Configure'
-  ClientHeight = 401
-  ClientWidth = 523
+  ClientHeight = 274
+  ClientWidth = 506
+  StyleBook = dmStyleRes.StyleBook1
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
@@ -17,18 +18,18 @@ object frmConfig: TfrmConfig
     Position.X = 8.000000000000000000
     Position.Y = 8.000000000000000000
     Size.Width = 129.000000000000000000
-    Size.Height = 333.000000000000000000
+    Size.Height = 206.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 1
     object tvMain: TTreeView
       Align = Client
       Size.Width = 129.000000000000000000
-      Size.Height = 308.000000000000000000
+      Size.Height = 181.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
       OnChange = tvMainChange
       Viewport.Width = 125.000000000000000000
-      Viewport.Height = 304.000000000000000000
+      Viewport.Height = 177.000000000000000000
       object tvitemGeneral: TTreeViewItem
         IsChecked = False
         IsExpanded = False
@@ -55,21 +56,21 @@ object frmConfig: TfrmConfig
     Margins.Top = 8.000000000000000000
     Margins.Right = 8.000000000000000000
     Margins.Bottom = 8.000000000000000000
-    Size.Width = 362.000000000000000000
-    Size.Height = 333.000000000000000000
+    Size.Width = 345.000000000000000000
+    Size.Height = 206.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
     object tabcontrolMain: TTabControl
       Align = Client
-      Size.Width = 362.000000000000000000
-      Size.Height = 333.000000000000000000
+      Size.Width = 345.000000000000000000
+      Size.Height = 206.000000000000000000
       Size.PlatformDefault = False
       TabIndex = 0
       TabOrder = 0
       TabPosition = None
       Sizes = (
-        362s
-        333s)
+        342s
+        202s)
       object tabItemGeneral: TTabItem
         CustomIcon = <
           item
@@ -127,7 +128,7 @@ object frmConfig: TfrmConfig
           Margins.Top = 8.000000000000000000
           Margins.Bottom = 8.000000000000000000
           Position.Y = 8.000000000000000000
-          Size.Width = 362.000000000000000000
+          Size.Width = 342.000000000000000000
           Size.Height = 17.000000000000000000
           Size.PlatformDefault = False
           TextSettings.Font.StyleExt = {00070000000000000004000000}
@@ -140,8 +141,8 @@ object frmConfig: TfrmConfig
   end
   object Layout3: TLayout
     Align = MostBottom
-    Position.Y = 349.000000000000000000
-    Size.Width = 523.000000000000000000
+    Position.Y = 222.000000000000000000
+    Size.Width = 506.000000000000000000
     Size.Height = 52.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 2

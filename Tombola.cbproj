@@ -221,6 +221,13 @@
             <DependentOn>CmdLineParser.h</DependentOn>
             <BuildOrder>8</BuildOrder>
         </CppCompile>
+        <CppCompile Include="DataModStyleRes.cpp">
+            <Form>dmStyleRes</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+            <DependentOn>DataModStyleRes.h</DependentOn>
+            <BuildOrder>25</BuildOrder>
+        </CppCompile>
         <CppCompile Include="FMXFormAppMain.cpp">
             <Form>frmPanelAppMain</Form>
             <FormType>fmx</FormType>
@@ -269,12 +276,13 @@
             <DependentOn>TrayIcon.h</DependentOn>
             <BuildOrder>2</BuildOrder>
         </CppCompile>
-        <FormResources Include="FormPanel.fmx"/>
-        <FormResources Include="FormMain.fmx"/>
-        <FormResources Include="FormConfig.fmx"/>
-        <FormResources Include="FrameNum.fmx"/>
-        <FormResources Include="FMXFormPanelBase.fmx"/>
         <FormResources Include="FMXFormAppMain.fmx"/>
+        <FormResources Include="FMXFormPanelBase.fmx"/>
+        <FormResources Include="FrameNum.fmx"/>
+        <FormResources Include="FormConfig.fmx"/>
+        <FormResources Include="FormMain.fmx"/>
+        <FormResources Include="FormPanel.fmx"/>
+        <FormResources Include="DataModStyleRes.dfm"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -317,13 +325,13 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin\borlndmm.dll" Class="DependencyModule">
-                    <Platform Name="Win32">
+                <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgcrtl.dylib" Class="DependencyModule">
+                    <Platform Name="OSX32">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgcrtl.dylib" Class="DependencyModule">
-                    <Platform Name="OSX32">
+                <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin\borlndmm.dll" Class="DependencyModule">
+                    <Platform Name="Win32">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -375,6 +383,12 @@
                 </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32250.dll" Class="DependencyModule">
                     <Platform Name="Win32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName=".\Win64\Debug\Tombola.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win64">
+                        <RemoteName>Tombola.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

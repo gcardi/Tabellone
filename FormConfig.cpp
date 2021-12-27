@@ -5,6 +5,7 @@
 #include <tchar.h>
 
 #include "FormConfig.h"
+#include "DataModStyleRes.h"
 
 //---------------------------------------------------------------------------
 #pragma package(smart_init)

@@ -25,7 +25,6 @@ using TNumEvent =
 class TfrmPanel : public TfrmPanelBase
 {
 __published:	// IDE-managed Components
-    TStyleBook *StyleBook1;
     TGridLayout *GridLayout1;
     TLayout *Layout1;
     TRectangle *Rectangle1;
