@@ -1,9 +1,9 @@
 __astcache/
 __history/
 __recovery/
-Docs/
 Win32/
 Win64/
+Win64x/
 html/
 latex/
 *.bak

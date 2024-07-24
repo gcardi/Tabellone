@@ -9,8 +9,9 @@ git clone --recurse-submodules https://github.com/gcardi/Tabellone.git
 
 The control panel:
 
-<a href="https://ibb.co/BfCC1q4"><img src="https://i.ibb.co/S633LRQ/Bingo-0.png" alt="Bingo-0" border="0"></a>
+<img src="docs/assets/images/Bingo-0.png" alt="Control Panel" border="0">
 
 The board:
 
-<a href="https://ibb.co/WzHMg04"><img src="https://i.ibb.co/4SFXP2n/Bingo-1.png" alt="Bingo-1" border="0"></a>
+<img src="docs/assets/images/Bingo-1.gif" alt="Board Panel" border="0">
+
