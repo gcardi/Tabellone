@@ -32,7 +32,7 @@ OptionType Options[2] = {
       /* Found         */  false,
       /* Mandatory     */  false,
       /* ValueRequired */  true,
-      /* ValueDesc     */  _T( "Session name" ),
+      /* ValueDesc     */  _T( "A session name" ),
       /* ValueLongDesc */  _T( "the session name to differentiate the configuration" ),
       /* Value         */  _T( "" )
     ),
