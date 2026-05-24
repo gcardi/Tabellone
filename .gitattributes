@@ -1,0 +1,9 @@
+# Forza i sorgenti C++Builder come C++
+*.cpp linguist-language=C++
+*.h linguist-language=C++
+*.hpp linguist-language=C++
+*.cxx linguist-language=C++
+
+# Escludi i form Delphi/C++Builder dalle statistiche
+*.dfm linguist-generated
+*.fmx linguist-generated
