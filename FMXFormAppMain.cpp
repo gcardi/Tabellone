@@ -86,8 +86,8 @@ void TfrmPanelAppMain::Init()
     );
 
     trayIcon_ = std::move( make_unique<TTrayIcon>( nullptr, Handle ) );
-    trayIcon_->Icon = _T( "MAINICON" );
-    trayIcon_->Hint = _T( "Tabellone" );
+    trayIcon_->Icon = _D( "MAINICON" );
+    trayIcon_->Hint = _D( "Tabellone" );
     trayIcon_->OnDblClick = &TrayIconDblClick;
     trayIcon_->OnRClick = &TrayIconRClick;
 
@@ -109,7 +109,7 @@ void TfrmPanelAppMain::Init()
 
         comboboxPanelTopLeftScreen->Items->AddObject(
             Format(
-                _T( "%s (%s)" ),
+                _D( "%s (%s)" ),
                 ARRAYOFCONST((
                     GDisp.DeviceString
                   , GDisp.DeviceName
@@ -145,7 +145,7 @@ void TfrmPanelAppMain::SetupCaption()
     TFileVersionInfo Info( ParamStr( 0 ) );
     Caption =
         Format(
-            _T( "%s, %s" ),
+            _D( "%s, %s" ),
             ARRAYOFCONST((
                 Info.FileDescription
               , Info.ProductVersion
@@ -221,41 +221,41 @@ void TfrmPanelAppMain::RestoreProperties()
     // Put code here to restore attribute(s)
     TConfigNode& BaseNode = GetConfigBaseNode( GetConfigRootNode() );
 
-    //RESTORE_VALUE( BaseNode, _T( "DisplayDeviceID" ), DisplayDeviceID );
+    //RESTORE_VALUE( BaseNode, _D( "DisplayDeviceID" ), DisplayDeviceID );
     String DispDevId = DisplayDeviceID;
-    RestoreValue( BaseNode, _T( "DisplayDeviceID" ), DispDevId );
+    RestoreValue( BaseNode, _D( "DisplayDeviceID" ), DispDevId );
     DisplayDeviceID = DispDevId;
 
 //    AutoStart =
-        //BaseNode.GetItem( _T( "AutoStart" ), AutoStart ).operator bool();
+        //BaseNode.GetItem( _D( "AutoStart" ), AutoStart ).operator bool();
     bool AutoS = AutoStart;
-    BaseNode.GetItem( _T( "AutoStart" ), AutoS );
+    BaseNode.GetItem( _D( "AutoStart" ), AutoS );
     AutoStart = AutoS;
 
 //    AutoMinimizeOnTray =
-//        BaseNode.GetItem( _T( "AutoMinimizeOnTray" ), AutoMinimizeOnTray ).operator bool();
+//        BaseNode.GetItem( _D( "AutoMinimizeOnTray" ), AutoMinimizeOnTray ).operator bool();
     bool AutoMinOnTray = AutoMinimizeOnTray;
-    BaseNode.GetItem( _T( "AutoMinimizeOnTray" ), AutoMinOnTray );
+    BaseNode.GetItem( _D( "AutoMinimizeOnTray" ), AutoMinOnTray );
     AutoMinimizeOnTray = AutoMinOnTray;
 
-    TConfigNode& PanelNode = BaseNode.GetSubNode( _T( "Panel" ) );
+    TConfigNode& PanelNode = BaseNode.GetSubNode( _D( "Panel" ) );
 
     //PanelClipping =
-    //    PanelNode.GetItem( _T( "Clipping" ), PanelClipping ).operator bool();
+    //    PanelNode.GetItem( _D( "Clipping" ), PanelClipping ).operator bool();
     bool PnlClipping = PanelClipping;
-    PanelNode.GetItem( _T( "Clipping" ), PnlClipping );
+    PanelNode.GetItem( _D( "Clipping" ), PnlClipping );
     PanelClipping = PnlClipping;
 
     //PanelScaling =
-    //    PanelNode.GetItem( _T( "Scaling" ), PanelScaling ).operator bool();
+    //    PanelNode.GetItem( _D( "Scaling" ), PanelScaling ).operator bool();
     bool PnlScaling = PanelScaling;
-    PanelNode.GetItem( _T( "Scaling" ), PnlScaling );
+    PanelNode.GetItem( _D( "Scaling" ), PnlScaling );
     PanelScaling = PnlScaling;
 
     //PanelKeepAspectRatio =
-    //    PanelNode.GetItem( _T( "KeepAspectRatio" ), PanelKeepAspectRatio ).operator bool();
+    //    PanelNode.GetItem( _D( "KeepAspectRatio" ), PanelKeepAspectRatio ).operator bool();
     bool PnlKeepAspectRatio = PanelKeepAspectRatio;
-    PanelNode.GetItem( _T( "KeepAspectRatio" ), PnlKeepAspectRatio );
+    PanelNode.GetItem( _D( "KeepAspectRatio" ), PnlKeepAspectRatio );
     bool PanelKeepAspectRatio = PnlKeepAspectRatio;
 }
 //---------------------------------------------------------------------------
@@ -265,23 +265,23 @@ void TfrmPanelAppMain::SaveProperties() const
     // Put code here to restore attribute(s)
     TConfigNode& BaseNode = GetConfigBaseNode( GetConfigRootNode() );
 
-    //SAVE_VALUE( BaseNode, _T( "DisplayDeviceID" ), DisplayDeviceID );
-    SaveValue( BaseNode, _T( "DisplayDeviceID" ), DisplayDeviceID );
+    //SAVE_VALUE( BaseNode, _D( "DisplayDeviceID" ), DisplayDeviceID );
+    SaveValue( BaseNode, _D( "DisplayDeviceID" ), DisplayDeviceID );
 
-    //SAVE_VALUE( BaseNode, _T( "AutoStart" ), AutoStart );
-    SaveValue( BaseNode, _T( "AutoStart" ), AutoStart );
+    //SAVE_VALUE( BaseNode, _D( "AutoStart" ), AutoStart );
+    SaveValue( BaseNode, _D( "AutoStart" ), AutoStart );
 
-    //SAVE_VALUE( BaseNode, _T( "AutoMinimizeOnTray" ), AutoMinimizeOnTray );
-    SaveValue( BaseNode, _T( "AutoMinimizeOnTray" ), AutoMinimizeOnTray );
+    //SAVE_VALUE( BaseNode, _D( "AutoMinimizeOnTray" ), AutoMinimizeOnTray );
+    SaveValue( BaseNode, _D( "AutoMinimizeOnTray" ), AutoMinimizeOnTray );
 
     TConfigNode& PanelNode =
-        BaseNode.GetSubNode( _T( "Panel" ) );
-    //SAVE_VALUE( PanelNode, _T( "Clipping" ), PanelClipping );
-    SaveValue( BaseNode, _T( "Clipping" ), PanelClipping );
-    //SAVE_VALUE( PanelNode, _T( "Scaling" ), PanelScaling );
-    SaveValue( BaseNode, _T( "Scaling" ), PanelScaling );
-    //SAVE_VALUE( PanelNode, _T( "KeepAspectRatio" ), PanelKeepAspectRatio );
-    SaveValue( BaseNode, _T( "KeepAspectRatio" ), PanelKeepAspectRatio );
+        BaseNode.GetSubNode( _D( "Panel" ) );
+    //SAVE_VALUE( PanelNode, _D( "Clipping" ), PanelClipping );
+    SaveValue( BaseNode, _D( "Clipping" ), PanelClipping );
+    //SAVE_VALUE( PanelNode, _D( "Scaling" ), PanelScaling );
+    SaveValue( BaseNode, _D( "Scaling" ), PanelScaling );
+    //SAVE_VALUE( PanelNode, _D( "KeepAspectRatio" ), PanelKeepAspectRatio );
+    SaveValue( BaseNode, _D( "KeepAspectRatio" ), PanelKeepAspectRatio );
 }
 //---------------------------------------------------------------------------
 
@@ -402,9 +402,9 @@ void __fastcall TfrmPanelAppMain::tmrClockTimer(TObject *Sender)
         TDateTime const LocalSystemTime = Now();
         String const Text =
             Format(
-                _T( "%s" )
+                _D( "%s" )
               , ARRAYOFCONST((
-                    FormatDateTime( _T( "dddddd - tt" ), LocalSystemTime )
+                    FormatDateTime( _D( "dddddd - tt" ), LocalSystemTime )
                 ))
             );
         Panel->DateTimeString = Text;
@@ -420,7 +420,7 @@ FMXWinDisplayDev const * TfrmPanelAppMain::GetSelectedDisplay() const
             comboboxPanelTopLeftScreen->Items->Objects[Idx]
         );
     }
-    throw Exception( _T( "No display selected" ) );
+    throw Exception( _D( "No display selected" ) );
 }
 //---------------------------------------------------------------------------
 
@@ -518,7 +518,7 @@ HWND FindMainWIndow()
     DWORD CurrentPid = ::GetCurrentProcessId();
 
     do {
-        hWnd = ::FindWindowEx( NULL, hWnd, _T( "TFMAppClass" ), NULL );
+        hWnd = ::FindWindowEx( NULL, hWnd, _D( "TFMAppClass" ), NULL );
         if( hWnd ) {
             ::GetWindowThreadProcessId( hWnd, &Pid );
             if ( CurrentPid == Pid ) {
@@ -578,7 +578,7 @@ void __fastcall TfrmPanelAppMain::TrayIconRClick( System::TObject* Sender )
 
     ::GetCursorPos( &Pt );
 
-    // Sennò il menu popup rimane sotto la traybar
+    // Sennï¿½ il menu popup rimane sotto la traybar
     ::SetWindowPos(
         Fmx::Platform::Win::WindowHandleToPlatform( Handle )->Wnd,
         HWND_TOPMOST, 0, 0, 0, 0,

@@ -50,7 +50,7 @@ private:	// User declarations
     bool monitorScaling_ {};
     bool maintainAspectRatio_ {};
     std::unique_ptr<TImage> monoscope_;
-    String dateTimeString_ { _T( "-" ) };
+    String dateTimeString_ { _D( "-" ) };
 
     void Init();
     void Destroy();

@@ -117,8 +117,8 @@ void TfrmMain::CreatePanel( FMXWinDisplayDev const * Display, bool Clipping,
             nullptr
           , Display
           , Display ? StoreOpts::None : StoreOpts::All
-//          , &GetConfigRootNode().GetSubNode( _T( "Panel" ) )
-          , &GetConfigBaseNode( GetConfigRootNode() ).GetSubNode( _T( "Panel" ) )
+//          , &GetConfigRootNode().GetSubNode( _D( "Panel" ) )
+          , &GetConfigBaseNode( GetConfigRootNode() ).GetSubNode( _D( "Panel" ) )
           , &NumberChanged
         );
 
@@ -191,7 +191,7 @@ void __fastcall TfrmMain::actPanelClearExecute(TObject *Sender)
 {
 //
     auto const Reply = TDialogServiceSync::MessageDialog(
-        _T( "Are you sure?" ),
+        _D( "Are you sure?" ),
         TMsgDlgType::mtConfirmation,
         TMsgDlgButtons() << TMsgDlgBtn::mbYes << TMsgDlgBtn::mbNo,
         TMsgDlgBtn::mbNo,

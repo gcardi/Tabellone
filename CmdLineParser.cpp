@@ -36,7 +36,7 @@ struct CmpName {
 
 void ParseCmdLine( OptionType* const Options, size_t OptionCount )
 {
-    regex_type re( _T( "^\\s*[-\?]+([^=\\s-]+)(\?:=([^\\s]+))\?\\s*$" ) );
+    regex_type re( _D( "^\\s*[-\?]+([^=\\s-]+)(\?:=([^\\s]+))\?\\s*$" ) );
     for ( int Idx = 1 ; Idx <= ParamCount() ; ++Idx ) {
         String const Param = ParamStr( Idx ).c_str();
         cmatch_type m;
@@ -53,7 +53,7 @@ void ParseCmdLine( OptionType* const Options, size_t OptionCount )
                 if ( GetName( *it ) == m[1].str().c_str() ) {
                     if ( WasFound( *it ) ) {
                         throw Exception(
-                            _T( "Duplicated option \'%s\'" ),
+                            _D( "Duplicated option \'%s\'" ),
                             ARRAYOFCONST(( ParamStr( Idx ) ))
                         );
                     }
@@ -61,7 +61,7 @@ void ParseCmdLine( OptionType* const Options, size_t OptionCount )
                     if ( IsValueRequired( *it ) ) {
                         if ( !m[2].matched ) {
                             throw Exception(
-                                _T( "Option \'%s\' requires a value" ),
+                                _D( "Option \'%s\' requires a value" ),
                                 ARRAYOFCONST((
                                     GetName( *it )
                                 ))
@@ -73,13 +73,13 @@ void ParseCmdLine( OptionType* const Options, size_t OptionCount )
                 }
             }
             throw Exception(
-                _T( "Invalid option \'%s\'" ),
+                _D( "Invalid option \'%s\'" ),
                 ARRAYOFCONST(( ParamStr( Idx ) ))
             );
         }
         else {
             throw Exception(
-                _T( "Invalid parameter \'%s\'" ),
+                _D( "Invalid parameter \'%s\'" ),
                 ARRAYOFCONST(( ParamStr( Idx ) ))
             );
         }
@@ -92,7 +92,7 @@ void Validate( OptionType const * const Options, size_t OptionCount )
     for ( OptionType const * it = Options ; it != Options + OptionCount ; ++it ) {
         if ( IsMandatory( *it ) && IsTextEmpty( GetValue( *it ) ) ) {
             throw Exception(
-                _T( "Option \'%s\' is mandatory" ),
+                _D( "Option \'%s\' is mandatory" ),
                 ARRAYOFCONST(( GetName( *it ) ))
             );
         }
@@ -102,7 +102,7 @@ void Validate( OptionType const * const Options, size_t OptionCount )
 
 String StripFileExt( String Val )
 {
-    regex_type re( _T( "^(.*\?).\\w+$" ) );
+    regex_type re( _D( "^(.*\?).\\w+$" ) );
     cmatch_type m;
     if ( regex_match( Val.c_str(), m, re ) ) {
         return m[1].str().c_str();
@@ -116,49 +116,49 @@ String GetHelpText( OptionType const * const Options, size_t OptionCount )
     auto SB = make_unique<TStringBuilder>();
 
     size_t MaxParWidth = 0;
-    SB->AppendLine( _T( "Usage:" ) );
+    SB->AppendLine( _D( "Usage:" ) );
     SB->Append( LowerCase( StripFileExt( ExtractFileName( String( ParamStr( 0 ) ) ) ) ) );
     for ( OptionType const * Opt = Options ; Opt != Options + OptionCount ; ++Opt ) {
-        SB->Append( _T( ' ' ) );
+        SB->Append( _D( ' ' ) );
         if ( !IsMandatory( *Opt ) ) {
-            SB->Append( _T( '[' ) );
+            SB->Append( _D( '[' ) );
         }
-        SB->Append( String( _T( "-" ) ) );
+        SB->Append( String( _D( "-" ) ) );
         SB->Append( GetName( *Opt ) );
         if ( IsValueRequired( *Opt ) )  {
-            SB->AppendFormat( _T( "={%s}" ),
+            SB->AppendFormat( _D( "={%s}" ),
             ARRAYOFCONST(( GetValueDesc( *Opt ) )) );
         }
         if ( !IsMandatory( *Opt ) ) {
-            SB->Append( _T( ']' ) );
+            SB->Append( _D( ']' ) );
         }
         MaxParWidth = max( MaxParWidth, GetTextLen( GetName( *Opt ) ) );
     }
 
     SB->AppendLine();
     SB->AppendLine();
-    SB->AppendLine( _T( "Parameters:" ) );
+    SB->AppendLine( _D( "Parameters:" ) );
     for ( OptionType const * Opt = Options ; Opt != Options + OptionCount ; ++Opt ) {
         SB->AppendFormat(
-            _T( "  -%s" ), ARRAYOFCONST(( GetName( *Opt ) ))
+            _D( "  -%s" ), ARRAYOFCONST(( GetName( *Opt ) ))
         );
 
         if ( IsValueRequired( *Opt ) && !IsTextEmpty( GetValueDesc( *Opt ) ) ) {
             SB->AppendFormat(
-                _T( " = %s" ), ARRAYOFCONST(( GetValueDesc( *Opt ) ))
+                _D( " = %s" ), ARRAYOFCONST(( GetValueDesc( *Opt ) ))
             );
         }
 
-        SB->AppendFormat( _T( " ; %s" ), ARRAYOFCONST(( GetDesc( *Opt ) )) );
+        SB->AppendFormat( _D( " ; %s" ), ARRAYOFCONST(( GetDesc( *Opt ) )) );
 
         if ( !IsTextEmpty( GetValueDesc( *Opt ) ) ) {
             SB->AppendLine();
             SB->AppendFormat(
-                _T( "        %s" ), ARRAYOFCONST(( GetValueDesc( *Opt ) ))
+                _D( "        %s" ), ARRAYOFCONST(( GetValueDesc( *Opt ) ))
             );
             if( !IsTextEmpty( GetValueLongDesc( *Opt ) ) ) {
                 SB->AppendFormat(
-                    _T( ": %s" ), ARRAYOFCONST(( GetValueLongDesc( *Opt ) ))
+                    _D( ": %s" ), ARRAYOFCONST(( GetValueLongDesc( *Opt ) ))
                 );
             }
         }
@@ -166,7 +166,7 @@ String GetHelpText( OptionType const * const Options, size_t OptionCount )
         if ( !IsTextEmpty( GetValue( *Opt ) ) ) {
             SB->AppendLine();
             SB->AppendFormat(
-                _T( "        default=%s" ),
+                _D( "        default=%s" ),
                 ARRAYOFCONST(( GetValue( *Opt ) ))
             );
         }
