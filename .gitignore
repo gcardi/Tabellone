@@ -32,3 +32,8 @@ latex/
 *.@@@
 ~$*.*
 *.tmp
+
+# Distribution artifacts (installers, zips)
+/dist/
+# Inno Setup default output folder (if OutputDir is not overridden)
+Setup/Output/
