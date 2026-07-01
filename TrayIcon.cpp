@@ -61,7 +61,7 @@ __fastcall TFMXTrayIcon::TFMXTrayIcon( TComponent* AOwner, TWindowHandle* const 
 {
     data_.cbSize = sizeof( data_ );
     data_.hWnd = handle_;
-    data_.uID = reinterpret_cast<UINT>( data_.hWnd );
+    //data_.uID = reinterpret_cast<UINT>( data_.hWnd );
     data_.uTimeout = balloonTimeout_;
     data_.uFlags = NIF_MESSAGE | NIF_ICON | NIF_TIP;
     data_.uCallbackMessage = WM_TRAYICON_MESSAGE;
@@ -104,7 +104,7 @@ void TFMXTrayIcon::ShowBalloonHint()
 void __fastcall TFMXTrayIcon::SetIcon( String Value )
 {
     if ( CompareStr( icon_, Value ) ) {
-        icon_ = Value.IsEmpty() ? String( _T( "MAINICON" ) ) : Value;
+        icon_ = Value.IsEmpty() ? String( _D( "MAINICON" ) ) : Value;
         UpdateShow();
     }
 }

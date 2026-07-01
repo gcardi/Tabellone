@@ -216,7 +216,7 @@ void TfrmPanelBase::SetMonoscope( bool Val )
             get<ToIdx( FMXWinDisplayDevField::FMXDisplay )>( *display_ );
 
         auto MonoscopeStream = make_unique<TResourceStream>(
-            (unsigned)HInstance, "MONOSCOPE_1920x1080_PNG", RT_RCDATA
+            reinterpret_cast<NativeUInt>( HInstance ), "MONOSCOPE_1920x1080_PNG", RT_RCDATA
         );
         auto MonoscopeBitmap = make_unique<TBitmap>( MonoscopeStream.get() );
         monoscope_ = std::move( make_unique<TImage>( nullptr ) );

@@ -12,13 +12,13 @@
 
 
 //---------------------------------------------------------------------------
+USEFORM("DataModStyleRes.cpp", dmStyleRes); /* TDataModule: File Type */
 USEFORM("FMXFormAppMain.cpp", frmPanelAppMain);
 USEFORM("FMXFormPanelBase.cpp", frmPanelBase);
 USEFORM("FrameNum.cpp", frmeNum); /* TFrame: File Type */
 USEFORM("FormConfig.cpp", frmConfig);
 USEFORM("FormMain.cpp", frmMain);
 USEFORM("FormPanel.cpp", frmPanel);
-USEFORM("DataModStyleRes.cpp", dmStyleRes); /* TDataModule: File Type */
 //---------------------------------------------------------------------------
 extern "C" int FMXmain()
 {
