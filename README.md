@@ -94,6 +94,120 @@ Tabellone/
 - **System Tray Integration**: Runs in system tray for convenience.
 - **Multi-form Architecture**: Separated concerns with dedicated forms for display, panel, and configuration.
 
+## Using the Application
+
+### Overview
+
+Tombola drives a Bingo/Tombola game across **two windows**:
+
+- the **Control Panel** (main window), used by the operator to call numbers and
+  control the display;
+- the **Board**, the large, audience-facing display that shows the 90 numbers,
+  the currently called number, a live clock and the logo.
+
+The Board can run **full-screen on a secondary monitor** (a projector or a TV,
+for example) or in an ordinary **window**.
+
+### Typical workflow
+
+1. Launch `Tombola.exe`; the Control Panel opens.
+2. Choose where the Board should appear from the **Display** drop-down
+   (see [Display modes](#display-modes)).
+3. Press **Start** (`F5`). The Board opens and the Control Panel expands to
+   reveal the **1–90 keypad**.
+4. As numbers are drawn, click them on the keypad. Each called number is
+   highlighted on the Board and the most recent one is emphasised/animated.
+5. Use **Clear** to reset the game (it asks for confirmation).
+6. Press **Stop** (`F6`) to close the Board, or **Quit** to exit.
+
+The game state (which numbers have been called), the selected display and the
+options below are **persisted** between runs through the Anafestica
+configuration library, so you can close and reopen without losing the current
+card. Use `-session=<name>` to keep independent states (e.g. one per room).
+
+### Control Panel
+
+The same commands are available through the **menu bar**, on-screen
+**buttons/switches**, and the **tray-icon** menu.
+
+**File menu**
+
+- **Start** (`F5`) — build the keypad and open the Board.
+- **Stop** (`F6`) — close the Board.
+- **Config…** — open the settings dialog (available only while stopped).
+- **Quit** — exit the application.
+
+**Panel menu**
+
+- **Show** (`F9`) / **Hide** (`F10`) — show or hide the Board without stopping
+  the game.
+- **Monoscope** (`F12`) — toggle a test-pattern (monoscope) image on the Board,
+  handy to position and calibrate the display.
+- **Clipping** (`Alt+F9`), **Scaling** (`Alt+F10`),
+  **Keep aspect ratio** (`Alt+F11`) — display-fitting options
+  (see [Display modes](#display-modes)).
+- **Autofit** (`F11`) — fit the window to its content (windowed mode only).
+
+The **1–90 keypad** appears once the game is started: click a number to mark it
+as called, click it again to un-mark it. The **Clear** button resets every
+number.
+
+### Display modes
+
+Use the **Display** drop-down (disabled while the game is running) to choose the
+Board target:
+
+- **Window** — the Board runs in a regular, movable and resizable window.
+- **&lt;monitor name&gt;** — the Board runs full-screen on the chosen monitor.
+  All detected monitors are listed and the primary one is preselected.
+
+When the Board is shown on a monitor, the following options control how its
+content is fitted (they are disabled in Window mode):
+
+- **Scaling** — scale the board content to the monitor.
+- **Keep aspect ratio** — preserve proportions while scaling (avoids stretching).
+- **Clipping** — clip the content to the monitor bounds.
+
+In **Window** mode, **Autofit** resizes the window to fit its content.
+
+### System tray
+
+The application installs a **system-tray icon**:
+
+- **Minimizing** the Control Panel sends the app to the tray (it disappears from
+  the taskbar).
+- **Double-click** the tray icon to restore the main window.
+- **Right-click** the tray icon for a menu with the most common commands: Open,
+  Start, Stop, Monoscope, Show, Hide, Clipping, Scaling, Keep aspect ratio,
+  Autofit and Quit.
+
+Combined with **Auto start** and **Auto minimize on tray** (see below), this lets
+Tombola launch and go straight to the tray, ready to drive the Board.
+
+### Settings (Config… dialog)
+
+Available from **File ▸ Config…** while the game is stopped:
+
+- **Auto start** — automatically press Start when the application launches.
+- **Auto minimize on tray** — after auto-starting, minimize the Control Panel to
+  the tray.
+
+Confirm with **OK** or discard with **Cancel**.
+
+### Keyboard shortcuts
+
+| Shortcut   | Command                |
+| ---------- | ---------------------- |
+| `F5`       | Start                  |
+| `F6`       | Stop                   |
+| `F9`       | Show board             |
+| `F10`      | Hide board             |
+| `F11`      | Autofit (windowed)     |
+| `F12`      | Monoscope (toggle)     |
+| `Alt+F9`   | Clipping               |
+| `Alt+F10`  | Scaling                |
+| `Alt+F11`  | Keep aspect ratio      |
+
 ## Command-Line Options
 
 Options are prefixed with `-`. Options that take a value use the form
