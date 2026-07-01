@@ -6,10 +6,10 @@
 #include "CmdLineParser.h"
 
 enum class Opt {
-    Help, Session
+    Help, Logo, Session,
 };
 
-extern CmdLineParser::OptionType Options[2];
+extern CmdLineParser::OptionType Options[3];
 
 //---------------------------------------------------------------------------
 #endif

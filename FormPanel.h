@@ -34,10 +34,12 @@ private:	// User declarations
     std::array<std::unique_ptr<TfrmeNum>,90> numFrames_;
     TNumEvent onNumberChanged_ { nullptr };
     int currNum_ {};
-    static constexpr auto TabsNodeName = _T( "Tabs" );
+    static constexpr auto TabsNodeName = _D( "Tabs" );
 
     void RestoreProperties();
     void SaveProperties() const;
+
+    void LoadExternalLogo();
 
     String GetTabsText() const;
     void SetTabsText( String Val );

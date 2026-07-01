@@ -3,6 +3,8 @@
 #include <fmx.h>
 #pragma hdrstop
 
+#include <System.IOUtils.hpp>
+
 #include <algorithm>
 #include <memory>
 
@@ -10,6 +12,7 @@
 
 #include "FormPanel.h"
 #include "DataModStyleRes.h"
+#include "CmdLineOptions.h"
 
 using std::make_unique;
 using std::swap;
@@ -22,16 +25,6 @@ using std::swap;
 //TfrmPanel *frmPanel;
 //---------------------------------------------------------------------------
 
-/*
-__fastcall TfrmPanel::TfrmPanel( TComponent* Owner,
-                                 FMXWinDisplayDev const * Display,
-                                 Anafestica::TConfigNode* const RootNode )
-    : TfrmPanel( Owner, Display, StoreOpts::All, RootNode )
-{
-}
-*/
-//---------------------------------------------------------------------------
-
 __fastcall TfrmPanel::TfrmPanel( TComponent* Owner,
                                  FMXWinDisplayDev const * Display,
                                  StoreOpts StoreOptions,
@@ -40,8 +33,6 @@ __fastcall TfrmPanel::TfrmPanel( TComponent* Owner,
     : TfrmPanelBase( Owner, Display, StoreOptions, RootNode )
     , onNumberChanged_{ OnNumberChanged }
 {
-//    RestoreProperties();
-
     auto It = begin( numFrames_ );
     for ( int Idx = 1 ; Idx <= 90 ; ++Idx ) {
         auto NewFrame = make_unique<TfrmeNum>( nullptr );
@@ -50,7 +41,43 @@ __fastcall TfrmPanel::TfrmPanel( TComponent* Owner,
         numFrames_[Idx-1] = std::move( NewFrame );
     }
 
+    LoadExternalLogo();
+
     RestoreProperties();
+}
+//---------------------------------------------------------------------------
+
+void TfrmPanel::LoadExternalLogo()
+{
+    // Carica il logo con questa precedenza:
+    //   1) file indicato dall'opzione da riga di comando "-logo=<file>";
+    //   2) "Logo.png" nella cartella dell'eseguibile;
+    //   3) immagine incorporata nel form (risorse dell'EXE).
+    // Se un file non esiste o non e' caricabile, si passa al livello successivo.
+    auto const TryLoad = [this]( String const & FileName ) -> bool {
+        if ( !FileName.IsEmpty() && Ioutils::TFile::Exists( FileName ) ) {
+            try {
+                Image1->Bitmap->LoadFromFile( FileName );
+                return true;
+            }
+            catch ( Exception const & ) {
+                // formato non supportato o file illeggibile: si prosegue col fallback
+            }
+        }
+        return false;
+    };
+
+    auto const & LogoOpt = Options[static_cast<size_t>( Opt::Logo )];
+    if ( CmdLineParser::WasFound( LogoOpt )
+         && TryLoad( CmdLineParser::GetValue( LogoOpt ) ) ) {
+        return;
+    }
+
+    TryLoad(
+        Ioutils::TPath::Combine(
+            Ioutils::TPath::GetDirectoryName( ParamStr( 0 ) ), _D( "Logo.png" )
+        )
+    );
 }
 //---------------------------------------------------------------------------
 
@@ -67,7 +94,6 @@ __fastcall TfrmPanel::~TfrmPanel()
 void TfrmPanel::RestoreProperties()
 {
     // Put code here to restore attribute(s)
-//    RESTORE_LOCAL_PROPERTY( CurrNum );
     RESTORE_LOCAL_PROPERTY( TabsText );
 }
 //---------------------------------------------------------------------------
@@ -76,27 +102,16 @@ void TfrmPanel::SaveProperties() const
 {
     // Put code here to save attribute(s)
     SAVE_LOCAL_PROPERTY( TabsText );
-//    SAVE_LOCAL_PROPERTY( CurrNum );
 }
 //---------------------------------------------------------------------------
 
 String TfrmPanel::GetTabsText() const
 {
-/*
-    auto SB = make_unique<TStringBuilder>();
-    for ( size_t Idx = 1 ; Idx <= 90 ; ++Idx ) {
-        SB->AppendFormat(
-            _T( "%s" ),
-            ARRAYOFCONST(( GetTab( Idx ) ? _T( "T" ) : _T( "F" ) ))
-        );
-    }
-    return SB->ToString();
-*/
     auto SB = make_unique<TStringBuilder>();
     for ( size_t Idx = 1 ; Idx <= 90 ; ++Idx ) {
         SB->Append(
             String(
-                GetTab( Idx ) ? currNum_ == Idx ? _T( "B" ) : _T( "T" ) : _T( "F" )
+                GetTab( Idx ) ? currNum_ == Idx ? _D( "B" ) : _D( "T" ) : _D( "F" )
             )
         );
     }
@@ -106,33 +121,15 @@ String TfrmPanel::GetTabsText() const
 
 void TfrmPanel::SetTabsText( String Val )
 {
-/*
-    Val = Val.Trim();
-    if ( Val.Length() == 90 ) {
-        auto const OldCurrNum = currNum_;
-        for ( size_t Idx = 1 ; Idx <= 90 ; ++Idx ) {
-            if ( Idx != OldCurrNum ) {
-                SetTab( Idx, Val[Idx] == _T( 'T' ) );
-            }
-        }
-        //currNum_ = OldCurrNum;
-        if ( OldCurrNum ) {
-            SetTab( OldCurrNum, Val[OldCurrNum] == _T( 'T' ) );
-        }
-        else {
-            currNum_ = 0;
-        }
-    }
-*/
     Val = Val.Trim();
     if ( Val.Length() == 90 ) {
         int CurrNum {};
         for ( size_t Idx = 1 ; Idx <= 90 ; ++Idx ) {
             switch( Val[Idx] ) {
-                case _T( 'T' ):
+                case _D( 'T' ):
                     SetTab( Idx, true );
                     break;
-                case _T( 'B' ):
+                case _D( 'B' ):
                     if ( !CurrNum ) {
                         CurrNum = Idx;
                     }
